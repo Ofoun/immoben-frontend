@@ -4,7 +4,7 @@
 FROM maven:3.8.2-jdk-11-slim AS build
 COPY src ./ImmobenWebParent/ImmobenFrontEnd/src
 COPY pom.xml ./ImmobenWebParent/ImmobenFrontEnd
-RUN mvn -f ./ImmobenWebParent/ImmobenFrontEnd/pom.xml clean package
+#RUN mvn -f ./ImmobenWebParent/ImmobenFrontEnd/pom.xml clean package
 
 #
 # Package stage
