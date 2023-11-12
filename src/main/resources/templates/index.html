@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: page_head('Immoben', 'none')">
+
+</head>
+
+<body>
+	<div class="container-fluid">
+
+		<div th:replace="navigation :: header_menu"></div>
+		<div th:replace="navigation :: search_nav"></div>
+
+		<div th:replace="navigation :: full-row"></div>
+		<div th:replace="navigation :: less-row"></div>
+
+		<div th:replace= "fragments :: alert-message"></div>
+
+		<div class="tablebody">
+			<div th:replace="navigation :: annonceArticleFirstPage2"></div>
+            <div th:replace="fragments :: search_nav_category_city_district"></div>
+
+			<!-- OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
+			<!-- OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
+			<!-- OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
+
+			<div th:replace= "fragments :: body-full-details"></div>
+			<div th:replace= "fragments :: body-less-details"></div>
+
+			<div th:replace="modal_fragments :: confirm_modal"></div>
+			
+			<div th:replace= "fragments :: modal-dialog-content"></div>
+			
+			<div th:replace="fragments :: pagination('/product', 'annonce de')"></div>
+
+			<div th:replace="modal_fragments :: confirm_modal"></div>
+		</div>
+
+		<div th:replace="navigation :: footer_menu"></div>
+	</div>
+	
+	
+
+
+	<script th:src="@{/js/common_list.js}"></script>
+	<script th:src="@{/js/index_js.js}"></script>
+</body>
+</html>
+

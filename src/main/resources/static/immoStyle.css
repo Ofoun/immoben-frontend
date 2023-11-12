@@ -1,0 +1,2198 @@
+/* 
+ * The application's CSS3 stylesheet. Navigator design
+ * adapted from a tutorial of the Web Designer Wall:
+ * http://webdesignerwall.com/tutorials/css3-dropdown-menu
+*/
+:root {
+	--none: #f1faf8;
+	--none: #ccc;
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #ffffff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+
+/** ---------------------------------------------------------------------------------------------------------------------------------------------------
+ *  General Styling
+ * -------------------------------------------------------------------------------------------------------------------------------------------------- */
+.underline {
+	text-decoration: underline;
+}
+
+.oneline-top {
+	padding-top: 1em;
+}
+
+.twoline-top {
+	padding-top: 2em;
+}
+
+.treeline-top {
+	padding-top: 3em;
+}
+
+.tenline-top {
+	padding-top: 10em;
+}
+
+.oneline-bottom {
+	padding-bottom: 1em;
+}
+
+.twoline-bottom {
+	padding-bottom: 2em;
+}
+
+.treeline-bottom {
+	padding-bottom: 3em;
+}
+
+.fiveline-bottom {
+	padding-bottom: 5em;
+}
+
+.fiveline-top {
+	padding-top: 5em;
+}
+
+.treeline-margin { margin: 3em;}
+
+.lastline {
+	padding-bottom: 10em;
+}
+
+.highlight {
+	color : #DF7401; font-size: 1.5em;
+} 
+
+.bold {
+	font-weight: bold;
+}
+
+.title-styling {
+	color : #DF7401; 
+	font-size: 2.0em; 
+	font-weight: bold;
+	text-align: center;
+	text-decoration: underline;
+	margin-bottom: 0.5em;
+}
+
+.bild_normal {width: 100%; height: 500px; padding-top: 2em; padding-bottom: 3em;}
+
+.bild_klein {width: 50%; height: 300px; padding-top: 2em; padding-bottom: 3em;}
+
+
+/** -------------------------------------------------------------------------------------------------------------------------
+ *  														common definitions.
+ * ------------------------------------------------------------------------------------------------------------------------ */
+html, div.divhtml {
+  /*   width: 68%;   */            /* Wenn hier ge�ndert ist, dann gleich in html part4 �ndern */
+    width: 80%;    
+    max-width: 1200px; 
+	margin: 0 auto;
+	background: #CEE6E6;    /* #E8F5F4; */ /* #DBECEC; */ /* #CEE6E6; */ 
+}
+
+body, #body {
+	font: normal .8em/1.5em Arial, Helvetica, sans-serif;
+    /* background: url(image/cityenburgerTor_Bild.jpg); */   /* #e6ffee; */
+    background: url(image/f1faf8.png);   
+	background-attachment: fixed;
+    color: #000000;       /* #666; */
+	margin-top: 0px;
+	padding-top: 0;
+	line-height: 24px;
+	box-shadow: 0 0 15px black inset; /* Schatten nach innen mit inset */
+}
+
+
+#man {color: green;} #gue {color: yellow;} #vie {color: red;}
+
+
+/** -------------------------------------------------------------------------------------------------------------------------
+ *  	@media For mobile phones					@media For mobile phones
+ * ------------------------------------------------------------------------------------------------------------------------ */
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+   /*  width: 100%; */
+  }
+  
+  body {font-size: 1.5em !important; margin: 0;}
+  
+  html, div.divhtml { width: 100%; display: revert;}
+  
+ fieldset.col-12.fieldsetCSS {
+ 	width: 100% !important;
+	padding-bottom: 100px !important; 
+	border: solid 1px #6d6d6d; border-collapse: collapse; border-spacing: 0;
+	overflow-x:auto; color: #000000; font-size: 1.2em; 
+	/* min-width: -webkit-min-content; */
+	display:table-cell !important; 
+	 margin: 0 !important;
+}
+
+fieldset.col-12.fieldsetCSS div.title-styling { /* font-size: 1.5em !important; */} 
+
+section.rentArticle fieldset.col-12.fieldsetCSS, 
+section.modifySaleArticle fieldset.col-12.fieldsetCSS,
+section.addArticle-display fieldset.col-12.fieldsetCSS,
+section.saleArticle-display fieldset.col-12.fieldsetCSS { /* width: 45% !important; */ margin: 5px !important; }
+
+section.description { width: 100% !important; margin: 0px !important; }
+
+section.addSaleArticle-display fieldset.col-12.fieldsetCSS,
+section.saleArticle fieldset.col-12.fieldsetCSS,
+section.saleArticle-display fieldset.col-12.fieldsetCSS {}
+
+section.rentArticle-display {width: 100% !important;}
+
+section.rentArticle, section.addArticle-display { width: 100% !important; margin: 0 !important; }
+
+section.addSaleArticle-display, section.saleArticle, section.saleArticle-display { width: 72% !important; margin: 5px !important; }
+
+section.card_description div.listcard table.saleArticle-table { width: 100% !important;}
+
+main table.split article { width: 100% !important; margin: 0 !important; }
+  
+ button[type=button], button[type=submit] {
+  background-color: #339966; /* #4CAF50;  */
+  color: white;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 50% !important;
+  display: inline; 
+  padding: 10px;
+  text-align: center; 
+  resize: vertical;      
+} 
+ section#part1 button[type=button] {
+  background-color: #f1faf8; /* #4CAF50;  */
+  color: #000000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 100% !important;
+  display: inline; 
+  padding: 10px;
+  text-align: center; 
+  resize: vertical;      
+}
+
+/* ----------------------Part1----------------- */
+div.part1-B-div div.container-A  {  
+    font-size: 1.2em !important; 
+    letter-spacing: 0.0em !important;
+}
+section#part1 div.part1-B-divA { font-size: 2.0em !important; }
+
+table.account, table.account th { width: 100% !important; }
+table.account tr td.text { width: 40% !important; }
+table.account tr td.input{ width: 60% !important; }
+
+/*---------------------------------------------------------------------Login-windows -------------------------------------*/
+section.einloggen fieldset label { width: 90% !important; white-space: nowrap !important; padding: 0 20px !important;}
+
+section.einloggen fieldset button { min-width: fit-content !important; width: auto; display: inline-block; padding: 5px !important;
+ font-size: 0.8em !important; }
+
+
+/* ---------------------- Part1 Botton Container Middle----------------- */
+  section#part1 > div > div.row > div:nth-of-type(2) { width: 100%; height: auto; bottom: px; /* background: #ffff80; */ margin: 0; /* border: 1px solid #ff0000 */ }
+  section#part1 > div > div.row > div:nth-of-type(3) { top: 10px;}
+  
+  div.part1-B-div div.container-A  { padding-bottom: 35px;}
+     
+/*   div.part1-B-div div.container-B  { background: #ffff00; padding-bottom: 40px;} 
+  div.part1-B-divB-A1 { width: 33.33%; padding: 0; height: 100%; position: absolute; left: 0; border: 0.01px solid #c0c0c0; background: #000000; }
+  div.part1-B-divB-A2 { width: 33.33%; padding: 0; height: 100%; position: absolute; left: 33.33%; border: 0.01px solid #c0c0c0; background: #000000; }
+  div.part1-B-divB-C { width: 33.33%; padding: 0; height: 100%; position: absolute; right: 0; border: 0.01px solid #c0c0c0; background: #000000; }
+ */  div.part1-B-divB-B { padding-bottom: 25px;}	
+ 
+  button.btn.mein_konto { /* font-size: 0.8em; background: #f1faf8; border-style: none; */}
+    
+  div.part1-B-divB-A1 > button:hover, div.part1-B-divB-A2 > button:hover, div.part1-B-divB-C > button:hover {
+	background-color: #f2f2f2; 
+	border: 2px solid #339966; 
+	cursor: pointer; 
+	border-radius: 4px; 
+    box-sizing: border-box; 
+	color: #000000;
+	width: 100%;
+	height: 100%;
+	padding-top: 10px;  
+}
+
+div.part1-B-divB-C > button[disabled="disabled"]:hover {
+	cursor: no-drop;
+}
+
+/*------------------------------------Height after Phone Line------------*/
+
+section#part1 { width: 100%; height: 510px; }
+
+
+/* ---------------------------------Part2----------------- */
+
+div.card-body a.btn.btn-primary.btn.btn-rounded { width: 30% !important;}
+    
+
+/* ----------------------Part3 nav----------------- */
+  
+nav.navbar.justify-content-center.part3 { }
+nav.navbar.justify-content-center.part3 ul.navbar-nav { }
+ul.navbar-nav li { /* width: 100%; */ }
+nav.navbar.justify-content-center.part3 #phone {font-size: 1.1em !important;/*  width: 100%; display: block; */}   /* No works */
+
+nav.navbar.justify-content-center.part3 #clickcontact { /* width: 100%;font-size: 0.4em; padding-right: 3%; float: right; cursor: pointer; */}  /* No works */
+
+nav.navbar.justify-content-center.part3 li { font-size: 0.8em !important; /* width: 100%; text-align: center; float: center; */} /* No works */
+nav.navbar.justify-content-center.part3 li:nth-of-type(3):hover { width: 70% !important; font-size: 0.6em !important;}   
+
+ 	
+/*--------------------------Part4-------------------------------------*/
+
+nav.navbar.justify-content-center.part4 li {width: 100%; text-align: center !important;}
+
+
+/*--------------------------Part5------------------------------------*/ 
+
+/* The grid: Four equal columns that floats next to each other */
+section.card_description div.column, section.description div.column, section.description_for_sale div.column {
+  float: left;
+  width: 25% !important;  
+  padding: 2px;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  border: 2px solid #ffffff; 
+  max-height: 33.33333% !important; 
+ }
+  section.card_description div.maincard, section.description div.maincard,  section.description_for_sale div.maincard { width: 100%; height: 250px !important; /* height: 300px; */ border: 2px solid #111; float: left; background-color: blue; margin: 0;}
+ 
+  section.card_description div.row_fotocard, section.description div.row_fotocard, section.description_for_sale div.row_fotocard { width: 100%; /* height: 50% !important; */ float: left; border: 2px solid #111; background-color: #000000; margin: 0; }
+ 
+  section.card_description div.column img, section.description div.column img, section.description_for_sale div.column img { opacity: 0.8; cursor: pointer; height: 50px !important; } 
+  
+  section.card_description div.listcard table.rentArticle-table, section.description div.listcard table.rentArticle-table, 
+  section.description_for_sale div.listcard table.saleArticle-table {width: 100% !important;  padding: 2px; margin: 0 auto; font-weight: bold;} 
+  
+  
+/*--------------------------Part6------------------------------------*/  
+ footer div.vorfooter { 
+	width:40% !important; 
+    margin-left: 10px !important; 
+	color: #000000!important;
+	font-size: 0.8em !important;
+	white-space: nowrap;
+	text-align: left;
+	
+}
+ 
+
+
+
+
+
+	
+/*------------------------------------End------------*/    
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+
+div.part1-B-divB-A1 > button, div.part1-B-divB-A2 > button, div.part1-B-divB-C > button {
+     width: 100%;
+	 color: #000000;
+	 border: none;
+	 border-radius: 10px !important;
+	 cursor: pointer;
+	 font-size: 1.2em; 
+ 	 box-sizing: border-box;
+     resize: vertical; 
+     background-color: #f1faf8;
+     padding-bottom: 12px;
+     height: 100%; 
+}
+
+div.part1-B-divB-A1 > button:hover, div.part1-B-divB-A2 > button:hover, div.part1-B-divB-C > button:hover {
+	background-color: #f2f2f2; 
+	border: 2px solid #339966; 
+	cursor: pointer; 
+	border-radius: 10px !important; 
+    box-sizing: border-box; 
+	color: #000000;
+	width: 100%;
+	height: 100%;
+	padding-top: 10px;  
+}
+
+div.part1-B-divB-C > button[disabled="disabled"]:hover {
+	cursor: no-drop !important;
+}
+
+
+div.part1-B-divB-B-input-text {
+	width: 85%;
+	height: 100%;
+	float: left;
+	top: 0;
+}
+  
+  
+}
+
+/** --------------------------------------------------------------------------------------------------------------------------
+   	  Ende For Styling mobile phones:			  Ende For Styling mobile phones: 
+ ------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+/** --------------------------------------------------------------------------------------------------------------------------
+ *  	<part12>													<part1>&<part2>
+ * --------------------------------------------------------------------------------------------------------------------------*/
+ div.hidden {
+ 	display: none;
+ }
+ 
+ 
+
+/** --------------------------------------------------------------------------------------------------------------------------
+ *  	<part1>													<part1>
+ * --------------------------------------------------------------------------------------------------------------------------*/ 
+
+* {
+  box-sizing: border-box;
+}
+
+ .row::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+/* 
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+
+/*-----------------------------------Part1 ------------------------------*/
+
+section#part1 div.row.part1 {
+	width: 100%;
+	height: 170px;  
+	margin: 0;
+	padding-top: 0px;
+	padding-bottom: 0px; 
+	background: transparent; /* #339966;  */   /* rgb(153, 51, 0) ; */ 
+    text-shadow: 2px 2px 4px #000000;
+} 
+
+
+/* -----------------------header All Tree Parts-----------------------  */  
+section#part1 > div > div.row > div:nth-of-type(1),
+section#part1 > div > div.row > div:nth-of-type(2),
+section#part1 > div > div.row > div:nth-of-type(3) {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	position: relative;
+ }
+
+section#part1 .col-sm-12 {}
+
+/* -----------------------header Part1 Left Image-----------------------  */ 
+ 
+/* -----------------------Header Left Image-----------------------  */
+
+section#part1 .row > div:nth-of-type(1) {
+	/* border: 0.01px solid #ff0000; */
+}
+
+section#part1 img.image-part1-A {
+  width: 100%; 
+  height: 100%; 
+} 
+
+section#part1 .row .imagestext {
+  position: absolute;
+  bottom: 20px;
+  background: rgba(0, 0, 0, 0.0); /* Black background with 0.0 opacity */
+  color: #ffffff;
+  width: 100%;
+  padding-left: 10px;
+  font-size: 0.8em;
+  /* font-family: akronim;  */ 
+  text-align: left;
+  line-height: 1.6em;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+
+/* -----------------------header Middle Part1-----------------------  */ 
+
+section#part1 div.part1-B-div {
+	width: 100%;
+	height: 100%;
+	position: relative;
+    /* border: 0.01px solid #dc3545; */
+	/* background: #ffff80;  */ 
+}
+
+
+/* -----------------------Header 3 Part & Right Image-----------------------  */
+
+section#part1 .row > div:nth-of-type(3) { font-size: 1.5em;
+	/* border: 0.01px solid #ff8000; */
+}
+
+/* -----------------------Header Right Image Carousel-----------------------  */
+
+section#part1 .row .container1 > div#myCarousel.carousel.slide { 
+    height: 100%; width: 100%;
+}
+section#part1 .row .container1 > div#myCarousel.carousel.slide img.part1-C-image { 
+    height: 100%; width: 100%;
+}
+section#part1 .row .container1 div.carousel-caption h3 { color:#00ff00; font-weight: bold;}
+section#part1 .row .container1 div.carousel-caption p { 
+	font-size: 0.7em; 
+	text-shadow: 2px 2px 4px #000000;
+	padding-bottom: 15px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* -----------------------header Middle Firm Name-----------------------  */
+section#part1 div.part1-B-divA {
+	text-shadow: 2px 2px 4px #000000;
+	width: 100%;
+	height: 48%;    
+	position: absolute;
+ 	text-align: center;
+ 	padding-top: 20px; 
+	font-size: 2.5em;
+	font-family: akronim;
+	color: #ffffff;
+}
+
+/* ------------------------------Header Second Part Middle------------------------ */
+section#part1 .row > div:nth-of-type(2) {
+	/* border: 0.01px solid #0000ff;  */
+/* 	position: relative; */
+
+}
+div.part1-B-div {}
+
+/*-----------------------Header Middle Text feld --------------------------*/
+
+/*----------------------------------------------------------------------Text: "Faites gratuitement vos annonces !"  ---------------------------------*/
+div.part1-B-div div.container-A  {
+    width: 100%;
+	height: 26%;  
+    font-size: 1.2em; 
+	position: absolute;
+	bottom: 26%;
+    white-space: nowrap; 
+    text-shadow: none;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center; 
+    background: transparent;
+    letter-spacing: 0.12em;
+    padding-top: 10px;
+    left: 0;
+}
+
+.awesome { font-family: futura;
+           font-style: italic;
+      	   width:100%;
+	       margin: 0 auto;
+	       text-align: center;
+	       color:#313131;
+	       font-size: 1em;
+	       font-weight: bold;
+	       position: absolute;
+	       -webkit-animation:colorchange 20s infinite alternate; 
+        }
+        
+@-webkit-keyframes colorchange {
+      0%  { color: #008000; }  
+      10% { color: #ff8000; } 
+      20% { color: #ff0000; }
+      30% { color: #808080; }
+      40% { color: #0000ff; }
+      50% { color: #ff0000; }
+      60% { color: #0000ff; }
+      70% { color: #2980b9; }
+      80% { color: #ff0000;}
+      90% { color: #2980b9; }
+      100%{ color: #0000ff;}
+    }
+
+/* @-webkit-keyframes colorchange {
+      0%  { color: blue; }  
+      10% { color: #8e44ad;} 
+      20% { color: #1abc9c; }
+      30% { color: #d35400;}
+      40% { color: blue; }
+      50% { color: #34495e; }
+      60% { color: blue; }
+      70% { color: #2980b9; }
+      80% { color: #f1c40f;}
+      90% { color: #2980b9; }
+      100%{ color: pink;}
+    } */
+
+
+
+
+/* ------------------------------------------------------ */
+
+/*-----------------------------------------------------BUTTONS EINLOGGEN, NEU AMELDEN, SUCHEN AND MEIN_KONTO-------------------------*/
+
+
+/* -----------------------------------Header Middle Container for all Buttons------------------- */
+
+div.part1-B-div div.container-B {
+	width: 100%;
+	height: 26%;  
+    font-size: 0.6em; 
+	position: absolute;
+	bottom: 0;
+    white-space: nowrap; 
+    text-shadow: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 auto;
+    background: #339966; 
+    left: 0;
+}
+
+div.row.part1-B-divB { width: 100%; height: 100%; margin: 0 auto;}
+
+
+/* -----------------------------Header All Buttons------------------------- */
+
+div.part1-B-divB-A1 { width: 33.33%; padding: 0; height: 100%; position: absolute; left: 0; border: 0.01px solid #ffffff; border-radius: 10px; background-color: #f1faf8;}
+ 
+div.part1-B-divB-A2 { width: 33.33%; padding: 0; height: 100%; position: absolute; left: 33.33%; border: 0.01px solid #ffffff; border-radius: 10px; background-color: #f1faf8;}
+ 
+div.part1-B-divB-C { width: 33.33%; padding: 0; height: 100%; position: absolute; right: 0; border: 0.01px solid #ffffff; 
+	border-radius: 10px; background-color: #f1faf8; color: #000000;} 
+button.btn.mein_konto { font-size: 0.8em; }
+
+
+div.part1-B-divB-A1 > button, div.part1-B-divB-A2 > button, div.part1-B-divB-C > button {
+     width: 100%;
+	 color: #000000;
+	 border: none;
+	 border-radius: 10px;
+	 cursor: pointer;
+	 font-size: 1.2em; 
+ 	 box-sizing: border-box;
+     resize: vertical; 
+     background-color: #f1faf8;
+     padding-bottom: 12px;
+     height: 100%; 
+}
+
+div.part1-B-divB-A1 > button:hover, div.part1-B-divB-A2 > button:hover, div.part1-B-divB-C > button:hover {
+	background-color: #f2f2f2; 
+	border: 2px solid #339966; 
+	cursor: pointer; 
+	border-radius: 10px; 
+    box-sizing: border-box; 
+	color: #000000;
+	width: 100%;
+	height: 100%;
+	padding-top: 10px;  
+}
+
+div.part1-B-divB-C > button[disabled="disabled"]:hover {
+	cursor: no-drop;
+}
+
+
+div.part1-B-divB-B-input-text {
+	width: 85%;
+	height: 100%;
+	float: left;
+	top: 0;
+}
+
+
+
+
+/*---------------------------------------------------------------------Login-windows -------------------------------------*/
+ 
+section.einloggen fieldset {width: 100%; padding: 15px; text-align: left;}
+
+section.einloggen fieldset input {width: 60%; height: 35px; color: #000000; 
+	text-align: center;  margin: 0 auto; position: relative; }
+ 	
+section.einloggen fieldset input[type="text"] { width: 72%; position: relative; left: 23.5%; }
+	
+section.einloggen fieldset input[type="password"] { position: relative; left: 1.5%; } 
+
+section.einloggen fieldset button { width: 22%; margin-left: 12.5%; color: #ffffff; height: 40px; text-align: center; 
+	padding: 0px 0px 0px 0px; margin-top: 5%; font-size: 1em;
+}
+
+section.einloggen span { margin-left: 10%;}
+
+section.einloggen fieldset legend { text-align: center; } 
+
+div.loggbeispiel { color: #000000; padding-top: 2em; }
+ 
+
+/*--------------------------------------------------------------------- Registration ------------------------------------*/
+section.anmelden fieldset {
+	width: 100%;
+	margin: 0 auto;
+	padding: 20px 200px;
+}
+
+section.anmelden fieldset input {
+	color: #000000;
+}
+
+/* section.anmelden button {
+	height: 50px;
+	font-size: 1em;
+	color: #ffffff;
+	padding: 4px 12px;
+	
+} */
+.asterix {color : red; font-size: 1.5em;}
+
+
+
+/*-----------------------------------Carousel Header Part1 Right--------------------------------------------------------*/
+
+section#part1 .col-sm-12 { 
+	width: 100%;
+	height: 100%;
+    border: 0.01px solid #fff;
+	display: block;
+	position: relative;
+ }
+
+section#part1 div.div-part1-C {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: block;
+	
+}
+
+section#part1 div.container1 { 
+	width: 100%;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}  
+
+section#part1 div.carousel-inner > div.item, 
+section#part1 div.carousel-inner > div.item active,
+section#part1 img.part1-C-image { 
+	margin-top: 0px; 
+	width: 100%px;
+	height: 100%;
+}
+ 
+
+section#part1 div.carousel-inner > div.item > img.part1-C-image, 
+section#part1 div.carousel-inner > div.item active > img.part1-C-image {
+   position: relative;
+   margin: 0px;
+   width: 100%;
+   height: 100%;
+   overflow: auto; 
+ }
+ 
+section#part1 div.carousel-inner > div.item:hover, 
+section#part1 div.carousel-inner > div.item active:hover,
+section#part1 img.part1-C-image:hover {
+	cursor: grab; 
+}
+ 
+section#part1 div.carousel-caption {text-shadow: 4px 4px 8px #000000; color: #ffffff; font-weight: bold; left: 0;}
+
+ 
+/** -------------------------------------------------------------------------------------------------------------------------
+ *  <part2>													<part2>
+ * --------------------------------------------------------------------------------------------------------------------------*/
+ 
+div.part2 {
+	width: 100%;
+	height: 300px;         /* Taille de part2 */
+	display: inline-block;
+	position: relative;
+	border: 0.01px solid #fff;
+	background-color: transparent; 
+	margin-top: 0px;
+	padding-top: 0px;
+    border-color: #339966;
+ }
+div.part2 div.top-content { padding-top: 20px; margin-left: 0; }
+
+ img.part2-image {
+ 	width: 100%;
+    height: 100%;
+    align: middle; 
+  	z-index: -1; 
+ }
+ 
+ #cf4 {
+    position:relative; 
+    height: 100%;
+    width: 100%; 
+    /* margin:0 auto; */ 
+  }
+  #cf4 img {
+    position:absolute;
+    height: 100%;
+    width: 100%; 
+    left:0;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+  }
+
+  #cf4 img.top {
+    -webkit-transform:scale(0,0);
+    -moz-transform:scale(0,0);
+    -o-transform:scale(0,0);
+    transform:scale(0,0);
+    opacity:0;
+
+  }
+
+  #cf4:hover img.top, #cf4.hover_effect img.top {
+    opacity:1;
+    -webkit-transform:scale(1,1);
+    -webkit-transform-origin: top right;
+    -moz-transform:scale(1,1);
+    -moz-transform-origin: top right;
+    -o-transform:scale(1,1);
+    -o-transform-origin: top right;
+    transform:scale(1,1);
+    transform-origin: top right;
+  }
+
+  #cf4:hover img.bottom, #cf4.hover_effect img.bottom {
+    -webkit-transform:scale(0,0);
+    -webkit-transform-origin: bottom left;
+    -moz-transform:scale(0,0);
+    -moz-transform-origin: bottom left;
+    -o-transform:scale(0,0);
+    -o-transform-origin: bottom left;
+    transform:scale(0,0);
+    transform-origin: bottom left;
+  }
+
+.carousel-item {
+  border: 0.01px solid #ffffff; margin: 0;
+}
+
+img.card-img-top {  
+	width: 100%;
+	height: 120px;                      /* Taille des images partie haute*/
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+    box-sizing: border-box;
+    border: 0.1px solid #000;
+}
+
+div.card-body {
+	width: 100%;
+	height: 140px;  /* 150px  */                 /* Taille de la partie basse de la carte */
+	background-color: #fff;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+    box-sizing: border-box;
+    border: 0.1px solid #000;
+    font-size: 0.6em;
+    line-height: 1.5em;
+    color: #000000;
+  bottom: 0;
+}
+
+div.card-body h4 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }     /* Card-Title  */
+
+a.carousel-control-prev, a.carousel-control-next { width: 15px;}
+a.carousel-control-prev:hover, a.carousel-control-next:hover { background-color: #44c8d7; border-radius: 10px;}
+
+
+span.carousel-control-prev-icon, span.carousel-control-next-icon {
+	background-color: #339966;}
+
+#card2-template, #card4-template {
+	width: 100%;
+}
+section.card2, section.card4 {width: 100%;}
+
+p.card-text { overflow: hidden; text-align: left;
+   display: -webkit-box; 
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+  font-size: 1.2em; 
+  height: 60%;                                 /* Taille du texte de la carte */
+  }
+ 
+ div.card-body btn.btn-primary.btn.btn-rounded { margin-top: 0; bottom: 0;}
+ 
+ 
+ /** --------------------------------------------------------------------------------------------------------------------------
+ *  	<part5>													<part5-Card-OUTPUT>
+ * --------------------------------------------------------------------------------------------------------------------------*/
+ 
+ 
+  /* ------------------Create_Description------------- */
+  
+/*   
+ section.create_description div.carddiv,  section.create_description_for_sale div.carddiv {position: relative; width: 100%; text-align: left; height: 1068px; border: 2px solid #c0c0c0; color: #111;}
+ 
+ 
+ section.create_description div.maincard, section.create_description_for_sale div.maincard {width: 60%; height: 38%; max-height:400px; border: 2px solid #111; float: left; background-color: blue; margin-bottom: 10px; margin: 10px; position: relative;} 
+ 
+ 
+ section.create_description div.row_fotocard, section.create_description_for_sale div.row_fotocard {position: absolute; width: 60%; height: 28%; top: 41%; float: left; border: 2px solid #111; background-color: #000000; margin-left: 10px; margin-bottom: 10px;}
+ 
+ section.create_description div.column img, section.create_description_for_sale div.column img { opacity: 0.8; cursor: pointer; height: 92px; max-height: 92px; }     Style the images inside the grid
+ 
+ section.create_description div.column input, section.create_description_for_sale div.column input { font-size: 0.4em; width: 100%;}      Style the input inside the grid of image
+	
+ section.create_description .column img:hover, section.create_description_for_sale .column img:hover { opacity: 1; }
+ 
+ 
+ section.create_description div.description_message, section.create_description_for_sale div.description_message { position: absolute; bottom: 0%; width: 100%; }
+ 
+ section.create_description div.description_message textarea, section.create_description_for_sale div.description_message textarea { text-align: left; align: left;}
+ 
+ section.create_description div.description_message fieldset.fieldsetCSS, section.create_description_for_sale div.description_message fieldset.fieldsetCSS { position: relative; width: 100%; height: 20%; border: 0.5px solid #ffffff; background-color: none;  margin-right: 10px;}
+ 
+ section.create_description div.description_message fieldset.fieldsetCSS legend, section.create_description_for_sale div.description_message fieldset.fieldsetCSS legend { padding-top: 3em;}
+ 
+ 
+ section.create_description div.listcard table.article-table, section.create_description_for_sale div.listcard table.article-table {	font-size: 0.95em; padding: 2px; font-weight: bold;}
+ 
+ section.create_description div.listcard table.article-table td[class="text"], section.create_description_for_sale div.listcard table.article-table td[class="text"] {width: 25%; font-size: 0.9em;}
+
+ section.create_description div.listcard table.article-table td[class="input"], section.create_description_for_sale div.listcard table.article-table td[class="input"] {width: 70%; font-size: 0.9em;}
+ 
+ section.create_description div.listcard > fieldset.fieldsetCSS, section.create_description_for_sale div.listcard > fieldset.fieldsetCSS {height: 68%; font-size: 0.8em; }
+ 
+ section.create_description div.listcard, section.create_description_for_sale div.listcard {width: 35%; float: right; margin-right: 10px; margin-top: 10px; background-color: #f1faf8; border: none;} */       /* ListCard (Preis, Produkt, User) */
+ 
+
+
+/* The grid: Four equal columns that floats next to each other */
+section.create_description .column, section.create_description_for_sale .column {
+/*   float: left;
+  width: 20%;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+  border: 2px solid #ffffff;
+  top:20%;
+  height: 50%; */
+  
+/*     float: left;
+  width: 20%;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+  border: 2px solid #ffffff;
+  height: 50%; */
+}
+
+
+/* Image after expanding */
+section.create_description div.containerTab img, section.create_description_for_sale div.containerTab img {/* width:100%; height: 100%; */}
+
+/* Clear floats after the columns */
+section.create_description .row_fotocard:after, section.create_description_for_sale .row_fotocard:after {
+/*   content: "";
+  display: table;
+  clear: both; */
+}
+
+/* The expanding image container (positioning is needed to position the close button and the text) */
+section.create_description .containerTab, section.create_description_for_sale .containerTab {width: 100%; height: 100%; 
+/*   padding: 15px;
+  color: white;
+  position: absolute; */
+}
+
+
+/* Expanding image text */
+section.create_description #imgtext, section.create_description_for_sale #imgtext {
+/*   position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: #000000;
+  font-size: 20px; */
+}
+
+/* Closable button inside the image */
+section.create_description span.closebtn, section.create_description_for_sale span.closebtn {
+/*   position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+  float: right; */
+} 
+ 
+ /* ------------------End-Create_Description------------- */
+  
+    
+  
+
+/*  ------------------------------------------------------------ OUTPUT CARD TEMPLATE -----------------Description------------- */ 
+
+ 
+ section.card_description div.carddiv, 
+ section.card_description_for_sale div.carddiv,
+ section.description div.carddiv, 
+ section.description_for_sale div.carddiv,
+ section.create_description div.carddiv,  
+ section.create_description_for_sale div.carddiv { width: 100%; text-align: left; border: 2px solid #c0c0c0; color: #111; }
+ 
+ 
+ section.card_description div.maincard, 
+ section.card_description_for_sale div.maincard,
+ section.description div.maincard,  
+ section.description_for_sale div.maincard,
+ section.create_description div.maincard, 
+ section.create_description_for_sale div.maincard { width: 100%; height: 600px; border: 2px solid #111; float: left; background-color: blue; margin: 0;}
+ 
+
+ section.card_description div.row_fotocard, 
+ section.card_description_for_sale div.row_fotocard,
+ section.description div.row_fotocard, 
+ section.description_for_sale div.row_fotocard,
+ section.create_description div.row_fotocard, 
+ section.create_description_for_sale div.row_fotocard { width: 100%; height: 18%; float: left; border: 2px solid #111; background-color: #000000; margin: 0; }
+
+ section.card_description div.column img, 
+ section.description div.column img, 
+ section.description_for_sale div.column img,
+ section.create_description div.column img, 
+ section.create_description_for_sale div.column img { opacity: 0.8; cursor: pointer; height: 92px; }       /* Style the images inside the grid */
+ 
+ section.card_description div.column img:hover, 
+ section.card_description_for_sale div.column img:hover, 
+ section.description div.column img:hover, 
+ section.description_for_sale div.column img:hover,
+ section.create_description .column img:hover, 
+ section.create_description_for_sale .column img:hover { opacity: 1; }
+ 
+ section.create_description div.column input, 
+ section.create_description_for_sale div.column input { font-size: 0.4em; width: 100%;}      /* Style the input inside the grid of image */
+
+ 
+ section.card_description div.description_message,
+ section.card_description_for_sale div.description_message, 
+ section.description div.description_message, 
+ section.description_for_sale div.description_message,
+ section.create_description div.description_message, 
+ section.create_description_for_sale div.description_message { width: 100%; padding: 0; margin: 0;}
+ 
+ section.card_description div.description_message fieldset.fieldsetCSS, 
+ section.card_description_for_sale div.description_message fieldset.fieldsetCSS,
+ section.description div.description_message fieldset.fieldsetCSS, 
+ section.description_for_sale div.description_message fieldset.fieldsetCSS,
+ section.create_description div.description_message fieldset.fieldsetCSS, 
+ section.create_description_for_sale div.description_message fieldset.fieldsetCSS { width: 100%; border: 0.5px solid #ffffff; background-color: none;}
+ 
+ section.card_description div.description_message textarea,
+ section.card_description_for_sale div.description_message textarea, 
+ section.description div.description_message textarea, 
+ section.description_for_sale div.description_message textarea,
+ section.create_description div.description_message textarea, 
+ section.create_description_for_sale div.description_message textarea { height: 80%; text-align: left; align: left;}
+ 
+ section.card_description div.description_message fieldset.fieldsetCSS legend, 
+ section.card_description_for_sale div.description_message fieldset.fieldsetCSS legend,
+ section.description div.description_message fieldset.fieldsetCSS legend, 
+ section.description_for_sale div.description_message fieldset.fieldsetCSS legend,
+ section.create_description div.description_message fieldset.fieldsetCSS legend, 
+ section.create_description_for_sale div.description_message fieldset.fieldsetCSS legend { padding-top: 3em;}
+   
+ 
+ section.card_description div.listcard, 
+ section.card_description_for_sale div.listcard,
+ section.description div.listcard, 
+ section.description_for_sale div.listcard,
+ section.create_description div.listcard, 
+ section.create_description_for_sale div.listcard { width: 100%; height: 100%; background-color: #f1faf8; border: none;}  
+ 
+ section.card_description div.listcard table.saleArticle-table,
+ section.card_description_for_sale div.listcard table.saleArticle-table, 
+ section.description div.listcard table.rentArticle-table, 
+ section.description_for_sale div.listcard table.saleArticle-table,
+ section.create_description div.listcard table.rentArticle-table, 
+ section.create_description_for_sale div.listcard table.saleArticle-table {width: 60%;  padding: 2px; margin: 0 auto; font-weight: bold;}     
+
+ section.card_description div.listcard table.rentArticle-table td[class="text"], 
+ section.card_description_for_sale div.listcard table.saleArticle-table td[class="text"],
+ section.description div.listcard table.rentArticle-table td[class="text"], 
+ section.description_for_sale div.listcard table.saleArticle-table td[class="text"],
+ section.create_description div.listcard table.rentArticle-table td[class="text"], 
+ section.create_description_for_sale div.listcard table.saleArticle-table td[class="text"] {width: 25%; font-size: 0.9em; color: #000000; }
+
+ section.card_description div.listcard table.rentArticle-table td[class="input"], 
+ section.card_description_for_sale div.listcard table.saleArticle-table td[class="input"],
+ section.description div.listcard table.rentArticle-table td[class="input"], 
+ section.description_for_sale div.listcard table.saleArticle-table td[class="input"],
+ section.card_description div.listcard table.rentArticle-table td[class="output"], 
+ section.description div.listcard table.rentArticle-table td[class="output"], 
+ section.description_for_sale div.listcard table.saleArticle-table td[class="output"],
+ section.create_description div.listcard table.rentArticle-table td[class="input"], 
+ section.create_description_for_sale div.listcard table.rentArticle-table td[class="input"],
+ section.create_description div.listcard table.saleArticle-table td[class="output"], 
+ section.create_description_for_sale div.listcard table.saleArticle-table td[class="output"] {width: 70%; font-size: 0.9em; padding-left: 20px; }
+ 
+ section.card_description div.listcard fieldset.fieldsetCSS, 
+ section.card_description_for_sale div.listcard fieldset.fieldsetCSS,
+ section.description div.listcard fieldset.fieldsetCSS,  
+ section.description_for_sale div.listcard fieldset.fieldsetCSS,
+ section.create_description div.listcard fieldset.fieldsetCSS, 
+ section.create_description_for_sale div.listcard fieldset.fieldsetCSS { width: 100%; /* font-size: 0.5em; */ }     
+
+ 
+/* The grid: Four equal columns that floats next to each other */
+section.card_description div.column,
+section.card_description_for_sale div.column, 
+section.description div.column, 
+section.description_for_sale div.column,
+section.create_description .column, 
+section.create_description_for_sale .column {
+  float: left;
+  width: 16.66666666666667%; 
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+  border: 2px solid #ffffff;
+  min-height: 50%;
+ }
+
+
+/* Image after expanding */
+div.containerTab img, 
+section.description div.containerTab img, 
+section.description_for_sale div.containerTab img,
+section.description_for_sale div.containerTab img,
+section.create_description div.containerTab img, 
+section.create_description_for_sale div.containerTab img {width:100%; height: 100%; }
+
+/* Clear floats after the columns */
+section.card_description div.row_fotocard:after,
+section.card_description_for_sale div.row_fotocard:after, 
+section.description div.row_fotocard:after, 
+section.description_for_sale div.row_fotocard:after,
+section.create_description .row_fotocard:after, 
+section.create_description_for_sale .row_fotocard:after { content: ""; display: table; clear: both; }
+
+/* The expanding image container (positioning is needed to position the close button and the text) */
+section.card_description div.containerTab,
+section.card_description_for_sale div.containerTab,  
+section.description div.containerTab, 
+section.description div.containerTab,
+section.create_description .containerTab, 
+section.create_description_for_sale .containerTab {width: 100%; height: 100%; padding: 15px; color: white; }
+
+
+/* Expanding image text */
+section.card_description #imgtext, 
+section.card_description_for_sale #imgtext,
+section.description #imgtext, 
+section.description_for_sale #imgtext,
+section.create_description #imgtext, 
+section.create_description_for_sale #imgtext { position: absolute; bottom: 15px; left: 15px; color: #000000; font-size: 20px; }
+
+/* Closable button inside the image */
+section.card_description span.closebtn,
+section.card_description_for_sale span.closebtn, 
+section.description span.closebtn, 
+section.description_for_sale span.closebtn,
+section.create_description span.closebtn, 
+section.create_description_for_sale span.closebtn { position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+  float: right;
+  } 
+  
+/*  ------------------------------------------------------------END  OUTPUT CARD TEMPLATE ----------------------*/
+  
+
+
+ /** -------------------------------------------------------------------------------------------------------------------------
+ *  <part3>													<part3>
+ * --------------------------------------------------------------------------------------------------------------------------*/
+ 
+ /* ----------------------Part3 nav----------------- */
+div.part0 { /* border: 1px solid #00ffff!important;
+	width:100%;
+	height: 70px;
+	color: white;
+    padding-top: 2px; 
+	background: #339966; 
+	text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+  	border: none;
+	font-size:28px;
+	margin-top: 15px; 
+  	margin-bottom: 0.5em;   Distanz between Part3 and Part4
+    overflow: hidden;
+    padding-top: 20px; */
+ }
+ 
+nav.navbar.justify-content-center.part3 {
+padding: 0; width: 100%;
+}
+ 
+nav.navbar.justify-content-center.part3 ul.navbar-nav {
+	/* height: 70px; */
+	border: 1px solid #0000ff; 
+	border-radius: 0; 
+	font-size: 1.8em; 
+	background: #339966;
+	margin-bottom: 0.0em;   /* Distanz between Part3 and Part4 */
+    overflow: hidden;
+	text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+    padding: 5px;	
+    width: 100%;	
+}
+
+
+ul.navbar-nav li { /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */ } 
+
+nav.navbar.justify-content-center.part3 li:nth-of-type(1) { width: 100px; color: #ffffff; white-space: nowrap; }
+nav.navbar.justify-content-center.part3 li:nth-of-type(2) { width: 60%; color: #ffffff; }
+nav.navbar.justify-content-center.part3 li:nth-of-type(3) { width: 20%; white-space: nowrap; }
+nav.navbar.justify-content-center.part3 li:nth-of-type(1) > p.nav-link { height: 100%; /* text-align: center; font-size: 3.0em; */}
+nav.navbar.justify-content-center.part3 li:nth-of-type(2) > p.nav-link { height: 100%; /* text-align: center; font-size: 2.0em; */}
+nav.navbar.justify-content-center.part3 li:nth-of-type(3) > a.nav-link { height: 100%; color: #ffffff !important; font-size: 1.5em; /* text-align: center; font-size: 3.0em; padding-bottom: 10px; */}
+
+ 
+ #part3 {
+/* 	width:100%;
+	height: 100%;
+	color: white; 
+    background: #f1faf8;
+	text-align: center;
+	font-size:28px;
+	margin-top: 15px; 
+  	margin-bottom: 1em;
+    text-shadow: 2px 2px 4px #000000;
+    overflow: hidden; */
+}
+
+div.divpart3 {
+/* 	width:100%;
+	height: 45px;
+	color: white;
+    padding-top: 2px; 
+	background: #339966; rgb(153, 51, 0);
+	text-align: center;
+	font-size:28px;
+    text-shadow: 2px 2px 4px #000000;
+    position: -webkit-sticky;
+  	position: sticky; 
+  	border: none; */
+}
+
+nav.navbar.justify-content-center.part3 #phone {font-size: 0.6em; padding-left: 3%; float: left; padding-top: 7px;}
+
+nav.navbar.justify-content-center.part3 #clickcontact {font-size: 0.4em; padding-right: 3%; float: right; cursor: pointer;}
+
+nav.navbar.justify-content-center.part3 a {
+/*   float: left;
+  display: block; */
+  
+/*   color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px; */
+}
+
+nav.navbar.justify-content-center.part3 a:hover {
+	width: 60%;
+	float: right;
+/*   background-color: #ddd;
+  color: black; */
+  overflow: auto;
+}
+
+nav.navbar.justify-content-center.part3 a.active {
+/*   background-color: #4CAF50;
+  color: #f1faf8; */
+}
+
+.sticky1 {
+  position: fixed;
+  top: 0;
+  width: 68%;
+}
+
+.sticky1 + .td2-content {
+  padding-top: 60px;
+}
+
+ul.c3style {
+	list-style-type: circle;
+} 
+
+.underline {
+	text-decoration: underline;
+}
+
+.table {
+	display: table;  /*  Allow the centering to work */
+
+}
+
+
+/** --------------------------------------------------------------------------------------------------------------------------
+ *  	<part4>													<part4>
+ * --------------------------------------------------------------------------------------------------------------------------*/
+
+nav.justify-content-center.part4 li {text-align: center; }
+ 
+nav.justify-content-center.part4 a:hover { background-color: #ddd; color: black; }
+
+div > output { color: red; font-weight: bolder; text-align: center; }           /* OUTPUT FOR RESULT */
+
+
+/** ----------------------------------------------------------------------------------------------------------
+ *                                          Navigation bar definitions.
+ * ----------------------------------------------------------------------------------------------------------- */
+
+/* div#part4 { height: 80px; border: 1px solid #ff0000; position: relative; top: 50px; } */
+/* div.row.part4 { height: 80px; border: 1px solid #0000ff; width: 100%; margin: 0 auto; padding-bottom: 0;} */
+nav.justify-content-center.part4 { width: 100%; padding: 0 !important; border-radius: 2em; /* border: solid 1px #ff0000;  */
+     background-color: #f1faf8 !important;  color: #f1faf8; bottom: 0; }
+
+nav.justify-content-center.part4 > ul {
+	width: 100%;
+	display: inline-block;
+	margin: 0 !important;
+	padding: 10px 0.5em 5px 0.5em;   
+	line-height: 100%;
+	background: #6fce9e; /* #8b8b8b; */ /* for non-css3 browsers */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9a9a9', endColorstr='#7a7a7a');/*  for IE */
+	border: solid 1px #6d6d6d;
+ 	margin-bottom: 3em; 
+	border-radius: 2em;
+	background: linear-gradient(#a9a9a9,  #7a7a7a);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .4); 
+}
+
+nav.justify-content-center.part4 li {
+ 	padding: 0 0 .6em 0; 
+	margin: 0 .4em;
+	list-style: none;
+    width: 24%; 
+}
+
+nav.justify-content-center.part4.horizontal li {
+ 	display: inline-block; 
+}
+
+ul#horizontal-list {
+ 	min-width: 696px;
+	padding-top: 5px;
+	margin-top: 0px;
+	text-shadow: 2px 2px 6px #339966; 
+}
+
+ul#horizontal-list li {
+	display: inline;
+	text-align: #ffffff; 
+}
+
+nav.horizontal ul {
+ 	/* height: 50px; */
+	top: 0;
+	margin: 0 5 0 0; 
+}
+
+nav.justify-content-center.part4 > ul > li {
+ 	margin: 0 5px;
+	margin: 0 1px;
+	padding: 0 0 5px;
+	float: left;
+	position: relative;
+	list-style: none;  
+}
+
+nav.justify-content-center.part4 a {
+	display: inline-block; padding: 0.4em 1.5em; /* padding: 0.5em 2em; */ /* Anchors Breite */ /* padding: .4em 1.5em; */  margin: 0;
+	color: #e7e5e5; font-weight: bold; border-radius: 1.6em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);  
+}
+
+nav.justify-content-center.part4 li.selected a, nav li:hover a {
+ 	color: #444444; background: linear-gradient(#ebebeb,  #a1a1a1); border-top: solid 1px #f0f0f0; border-radius: 0.2em;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .8); box-shadow: 0 1px 1px rgba(0, 0, 0, .2);  
+}
+
+
+/* main level link */
+nav.justify-content-center.part4 > ul > li > a {
+ 	font-weight: bold;
+	color: #e7e5e5;
+	text-decoration: none;
+	display: block;
+ 	/* padding:  8px 20px; */
+ 	margin: 0;  
+	-webkit-border-radius: 1.6em;
+	-moz-border-radius: 1.6em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);  
+}
+
+/* sub levels link hover */
+nav.justify-content-center.part4 > ul ul li:hover a, nav > ul li:hover li a {
+	background: none;
+	border: none;
+	color: #666;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+
+nav.justify-content-center.part4 > ul ul a:hover {
+	background: #0399d4 !important; /* for non-css3 browsers */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#04acec', endColorstr='#0186ba'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#04acec), to(#0186ba)) !important; /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #04acec,  #0186ba) !important; /* for firefox 3.6+ */
+	color: #fff !important;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+
+/* level 2 list */
+nav.justify-content-center.part4 > ul ul {
+	background: #ddd; /* for non-css3 browsers */
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cfcfcf'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#cfcfcf)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #fff,  #cfcfcf); /* for firefox 3.6+ */
+	/* display: none; */
+	margin: 0;
+	padding: 0;
+	width: 185px;
+	position: absolute;
+	top: 35px;
+	left: 0;
+	border: solid 1px #b4b4b4;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .3); 
+}
+
+dropdown
+nav.justify-content-center.part4 > ul li:hover > ul {
+	display: block;
+}
+
+nav.justify-content-center.part4 > ul ul li {
+	/* float: right; */
+	margin: 0;
+	padding: 0;
+}
+
+nav.justify-content-center.part4 > ul ul a {
+	font-weight: normal;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, .9);
+}
+
+/* level 3+ list */
+nav.justify-content-center.part4 > ul ul ul {
+	left: 181px;
+	top: -3px;
+}
+
+/* rounded corners for first and last child */
+nav.justify-content-center.part4 > ul ul li:first-child > a {
+	-webkit-border-top-left-radius: 9px;
+	-moz-border-radius-topleft: 9px;
+	-webkit-border-top-right-radius: 9px;
+	-moz-border-radius-topright: 9px;
+}
+
+nav.justify-content-center.part4 > ul ul li:last-child > a {
+	-webkit-border-bottom-left-radius: 9px;
+	-moz-border-radius-bottomleft: 9px;
+	-webkit-border-bottom-right-radius: 9px;
+	-moz-border-radius-bottomright: 9px;
+}
+
+clearfix
+nav.justify-content-center.part4 > ul:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.table {
+	display: table;   /*  Allow the centering to work */
+
+} 
+
+/** ----------------------------------------------------------------------------------------------------------------------------------
+ *    nav                                     Navigation bar definitions.
+ * -----------------------------------------------------------------------------------------------------------------------------------*/
+/* nav > ul {
+	width: 100%;
+	display: inline-block;
+	padding: 7px 6px 2px 20px;  
+	line-height: 100%;
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9a9a9', endColorstr='#7a7a7a'); for IE
+	border: solid 1px #6d6d6d;
+	margin-bottom: 3em; 
+	border-radius: 2em;
+	background: linear-gradient(#a9a9a9,  #7a7a7a);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+	
+}
+
+nav > ul > li {
+	margin: 0 1px;
+	padding: 0 0 5px; 
+	float: left;
+	position: relative;
+	list-style: none;
+}   
+
+nav a {
+	display: inline-block; padding: .4em 1.5em; margin: 0;
+	color: #e7e5e5; font-weight: bold; border-radius: 1.6em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+
+nav li.selected a, nav li:hover a {
+	color: #444444; background: linear-gradient(#ebebeb,  #a1a1a1); border-top: solid 1px #f0f0f0; border-radius: 0.2em;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .8); box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+
+main level link
+nav.horizontal > ul > li > a {
+	font-weight: bold;
+	color: #e7e5e5;
+	text-decoration: none;
+	display: block;
+	padding:  8px 20px;
+	margin: 0;
+	-webkit-border-radius: 1.6em;
+	-moz-border-radius: 1.6em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+
+nav.horizontal > ul > li ul > a {
+	font-weight: bold;
+	color: #e7e5e5;
+	color: #ff0000;
+	text-decoration: none;
+	display: block;
+	padding:  8px 20px;
+	margin: 0;
+	-webkit-border-radius: 1.6em;
+	-moz-border-radius: 1.6em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+} 
+
+clearfix
+nav > ul:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.table {
+	display: table;    Allow the centering to work
+
+}
+
+ul#horizontal-list {
+	min-width: 696px;
+	padding-top: 5px;
+	margin-top: 0px;
+	text-shadow: 2px 2px 6px #339966;
+}
+	
+ul#horizontal-list li {
+	display: inline;
+	text-align: #ffffff;
+	
+	color: #0399d4;
+}
+
+sub levels link hover
+nav > ul ul li:hover a, nav > ul li:hover li a {
+	background: none;
+	border: none;
+	color: #666;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+
+nav > ul ul a:hover {
+	background: #0399d4 !important; for non-css3 browsers
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#04acec', endColorstr='#0186ba'); for IE
+	background: -webkit-gradient(linear, left top, left bottom, from(#04acec), to(#0186ba)) !important; for webkit browsers
+	background: -moz-linear-gradient(top,  #04acec,  #0186ba) !important; for firefox 3.6+
+	color: #fff !important;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	float: right;
+}
+
+level 2 list
+nav > ul ul {
+	background: #ddd; for non-css3 browsers
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cfcfcf'); for IE
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#cfcfcf)); for webkit browsers
+	background: -moz-linear-gradient(top,  #fff,  #cfcfcf); for firefox 3.6+
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: 185px;
+    width: 50%; 
+	position: absolute;
+	top: 35px;
+	left: 0;
+	right: 0;
+	border: solid 1px #b4b4b4;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	display: block;
+}
+
+dropdown
+nav > ul li:hover > ul {
+	display: block;
+}
+
+nav > ul ul li {
+	float: none;
+ 	margin: 0;
+	padding: 0; 
+}
+
+
+nav > ul ul a {
+	font-weight: normal;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, .9);
+}
+
+rounded corners for first and last child
+nav > ul ul li:first-child > a {
+ 	-webkit-border-top-left-radius: 9px;
+	-moz-border-radius-topleft: 9px;
+	-webkit-border-top-right-radius: 9px;
+	-moz-border-radius-topright: 9px; 
+}
+
+nav > ul ul li:last-child > a {
+	-webkit-border-bottom-left-radius: 9px;
+	-moz-border-radius-bottomleft: 9px;
+	-webkit-border-bottom-right-radius: 9px;
+	-moz-border-radius-bottomright: 9px;
+}
+  */
+ 
+/** --------------------------------------------------------------------------------------------------------------------------
+ *  	<part5 OUTPUT>													<part5 OUTPUT>
+ * --------------------------------------------------------------------------------------------------------------------------*/
+
+table.articles tbody { color: #000000; font-size: 0.65em; padding: 2px; font-weight: bold; border-collapse: collapse; border-spacing: 0; overflow-x:auto;}
+
+main a:visited {color: #000000;}
+main a:hover {color: #000000; cursor: pointer; background-color: #339966;} 
+main rentArticle, main saleArticle { padding: 30px;}
+ 
+main table.split {width: 100%; margin: 0 auto;}
+ 					
+div.home_articles {
+ 	color : #DF7401; font-size: 1.5em; text-decoration: underline; text-align: center; padding-bottom: 1em;
+ }
+
+section.home fieldset label {width: 9.5%;}
+
+ main div.td2-content {
+	position:relative; 
+	/* overflow: auto;  */ 
+	height: 100%;
+	margin-bottom: 0;
+	padding: 16px; 
+}
+
+
+/*  div.privacy {
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 2em;
+ 	text-align:center; 
+	position: bottom; 
+	bottom: 0em;
+	color: #000000;
+} */  
+
+footer div.vorfooter { 
+	margin: 0 auto;
+	padding: 2em auto;
+ 	text-align:center; 
+	color: #000000;
+	font-size: 1.0em;
+	font-family:white;
+	width:100%;
+	position: relative;
+	margin-top: 0px;
+	padding-top: 0px;
+	padding-left: 10px;
+	padding-bottom:10px;
+	padding-right: 10px;
+}
+
+section {
+	display: block;
+	color: #000000;
+}
+
+main > section {
+	margin-bottom: 1.5em;
+	color: #000000;
+} 
+
+section.card2, section.card_description, section.card3, section.card4, section.card5, section.card6, 
+section.card7, section.card8, section.card9, section.card10,
+section.einloggen, section.neu_anmelden, section.anmelden, section.suchen, section.suchen_button, section.mein_konto {
+/* 	color: #dc3545;
+	font-size: 2em;
+	font-style: bold; */
+	color: #000000;
+}
+
+section.editArticle div.description_message, section.editSaleArticle div.description_message {margin-top: 1em; color: #000000;}
+
+
+
+
+
+
+/*  ------------------------------------------------------------ OUTPUT mein_konto TEMPLATE ----------------------*/
+
+table.articles th {width: 5%; height: 4em; border-collapse: collapse; border-spacing: 0; overflow-x:auto;} 
+
+
+table.account tr {height: 2.5em; font-size: 0.7em; color: #000000;}
+table.account tr td {width: 50%; font-size: 1em; color: #000000;} 
+table.account tr th {width: 50%; font-size: 1em; color: #000000;} 
+table.account {	margin: auto;}
+table.account, table.account th, table.account td {
+	width: 70%;
+	border: 4px solid #ffffff;
+ 	border-collapse: collapse;
+ 	color: #000000;
+} 
+
+table.account tr td.text {
+	width: 40%;
+  	padding-left: 20px; 
+ 	text-align: left; 
+ 	font-size: 1.2em;  
+ 	color: #000000; 
+}
+
+table.account tr td.input{
+	width: 60%;
+ 	text-align: left; 
+ 	font-size: 0.7em;  
+ 	margin-left: 0;
+ 	font-size: 1.2em; 
+ 	color: #000000;
+}
+
+
+/*----------------------------------------------------------------------------------------------------  */
+
+section.rentArticle-display td, section.rentArticle-display tr, section.rentArticle-display th, section.rentArticle-display table img,
+section.saleArticle-display td, section.saleArticle-display tr, section.saleArticle-display th, section.saleArticle-display table img {
+	border: 2px solid #ffffff; height: 60px; text-align: center; color: #000000 !important;
+}
+
+section.addArticle-display td, section.addArticle-display tr, section.addArticle-display th, section.addArticle-display table img,
+section.addSaleArticle-display td, section.addSaleArticle-display tr, section.addSaleArticle-display th, section.addSaleArticle-display table img {
+	border: 2px solid #ffffff; height: 60px; text-align: center; color: #000000 !important;
+}
+
+section.addAllArticle-display td, section.addAllArticle-display tr, section.addAllArticle-display th, section.addAllArticle-display table img,
+section.addAllSaleArticle-display td, section.addAllSaleArticle-display tr, section.addAllSaleArticle-display th, section.addAllSaleArticle-display table img{
+	border: 2px solid #ffffff; height: 60px; text-align: center; color: #000000 !important;
+}
+
+section.rentArticle-display button.pfeileNachLinks, section.addArticle-display button.pfeileNachLinks{ }
+
+section.rentArticle-display button.pfeileNachRecht, section.addArticle-display button.pfeileNachRecht{float: right;}
+section.saleArticle-display button.pfeileNachRecht, section.addSaleArticle-display button.pfeileNachRecht{float: right;}
+
+
+
+/*  ------------------------------------------- ALLE FIELDSET TEMPLATE <fieldset class= "fieldsetCSS">--------------------------------------*/
+fieldset.col-12.fieldsetCSS {
+	width: 100%; padding: 20px; margin: 0 auto; padding-bottom: 70px; 
+	border: solid 1px #6d6d6d; border-collapse: collapse; border-spacing: 0;
+	overflow-x:auto; color: #000000; font-size: 1.2em; 
+	/* min-width: -webkit-min-content; */
+	display:table-cell; 
+	/* text-align: left; */}
+
+
+fieldset.col-12.fieldsetCSS button {width: 20%;}
+
+section.rentArticle-display th:nth-of-type(10), section.addArticle-display th:nth-of-type(10) { font-size: 0.6em;}
+section.saleArticle-display th:nth-of-type(10), section.addSaleArticle-display th:nth-of-type(10) { font-size: 0.6em;}
+/*-------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*  ------------------------------------------- ARTIKELLISTE TEMPLATE <id= "display-template for �ndern & L�schen">--------------------------*/
+fieldset.fieldsetCSS td > anchor {color: #339966; margin: auto; font-weight: bold;}
+fieldset.fieldsetCSS td > anchor:hover {color: #ff0000; cursor: pointer;} 
+/*-------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+/** -----------------------------------------------------------------------------------------------------------------------------------------
+ *  	<part6>													<part6>
+ * ------------------------------------------------------------------------------------------------------------------------------------------*/
+  footer {
+ 	text-align: center;
+ }
+ 
+ footer > div.part6 {
+	background: #6c757d; /* transparent; */ /* #339966;  */
+	border: 3px solid #ffffff;
+	text-shadow: 2px 2px 4px #000000;
+	font-family:white;
+	width:100%;
+	height: 70px;
+	color: white;
+	position: relative;
+
+	margin-top: 0px;
+	padding-top: 0px;
+	padding-left: 10px;
+	padding-bottom:10px;
+	padding-right: 10px;
+} 
+
+
+/** ----------------------------------------------------------------------------------------------------------------------------------------
+ *  	<part7>													<part7>
+ * -----------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+.part7 {
+	text-shadow: 2px 2px 4px #000000;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+	color: #fff;
+}
+p {
+	text-align: center;
+}
+
+span.part7 {
+	font-style: italic;  
+	text-align: center;
+	width:100%;
+	height: 30px;
+	padding-bottom:10px;
+    text-shadow: 2px 2px 6px #000000;
+	color: #ff0000;
+}
+
+span a {
+	color: #343a40;
+}
+	
+.page-bottom {
+	margin-bottom: 20em;
+}
+
+
+/** ---------------------------------------------------------------------------------------------------------------------------------------
+ *  common definitions.
+ * -----------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+header div div.top {
+	color: white;
+	width:97.5%;
+	height: 25px;
+	margin-top: 0px;
+	margin-right:0px;	
+	padding-right: 25px;
+	padding-bottom:20px;
+	padding-top: 1px; 
+	background:  #339966; 
+	font-size: 18px;
+	text-align: right; 
+    text-shadow: 2px 2px 4px #000000;
+}
+
+
+footer > div.top {
+	background: #339966; 
+	text-shadow: 2px 2px 4px #000000;
+	text-align: center;
+	font-family:white;
+	width:98%;
+	height: 30px;
+	color: white;
+	position: relative;
+	margin-top: 0px;
+	padding-top: 0px;
+	padding-left: 10px;
+	padding-bottom:10px;
+	padding-right: 10px;
+}
+
+footer > div.bottom {
+	color: black;
+}
+p.bottom {
+	text-shadow: 2px 2px 4px #000000;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+}
+
+
+ 
+/** ----------------------------------------------------------------------------------------------------------------------------------
+ *  	<input & button>													<input & button>
+ * ------------------------------------------------------------------------------------------------------------------------------------*/	
+output[type=text], input[type=text], input[type=password], select, textarea {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  color: #0000ff;
+}
+
+output[type=text]:hover, input[type=text]:hover, input[type=password]:hover {
+	background-color: #f2f2f2;
+	border: 2px solid #339966;
+	cursor: pointer;
+} 
+select:hover {
+	background-color: #f2f2f2;
+	border: 2px solid #339966;
+	cursor: pointer;
+} 
+textarea:hover {
+	background-color: #f2f2f2;
+	border: 2px solid #339966;
+	cursor: pointer;
+}
+
+input[type=submit] {
+  background-color: #339966; 
+  color: white;
+  padding: 4px 20px; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #f2f2f2;
+  border: 2px solid #339966;
+  color: #339966;
+}
+
+button {
+ /*  height: 3em; */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;  
+  margin-bottom: 16px; 
+  resize: vertical;
+  padding: 10px;   
+  text-align: center;   
+} 
+
+ button[type=button], button[type=submit] {
+  background-color: #339966; /* #4CAF50;  */
+  color: white;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 20%;
+  display: inline; 
+  padding: 10px;
+  text-align: center; 
+  resize: vertical;      
+} 
+
+button[type=button]:hover, button[type=submit]:hover {
+  background-color: #f2f2f2; /* #7cedc9; */
+  border: 2px solid #339966;
+  color: #339966;
+  padding: 10px;
+} 
+
+section {
+	display: block;
+}
+
+main > section {
+	margin-bottom: 1.5em;
+} 
+
+footer > output {
+	color: red; font-weight: bolder;
+}
+ 
+/*  * Home section definitions. */
+
+section.home input {
+	width: 20em;
+}
+
+a {
+	color: #ff8080; /* #333; */
+}
+
+fieldset {
+	margin: 0; background: #e2e2e2;
+}
+
+legend {
+	font-size: 60%;
+}
+
+textarea {
+	font-size: inherit; font-family: inherit;
+}
+
+
+label.horizontal {
+	display: inline-block; width: 5em; text-align: right;
+	padding: 0 0.5em; vertical-align: middle;
+}
+
+span.avatar {
+	display: inline-block;
+	border: 2px groove #f0f0f0; background: #e2e2e2;
+}
+
+span.avatar img {
+	width: 6em; height: 6em;
+}
+
+span.slider {
+	overflow-x: scroll; 
+}
+
+span.slider a {
+	display: table-cell; padding: 0 1px; text-align: center;
+}
+
+span.slider img {
+	display: block;
+}
+
+a:hover img {
+	opacity: 0.7;
+}
+
+section {
+	display: block;
+}
+
+main > section {
+	margin-bottom: 1.5em;
+} 
+
+footer > output {
+	color: red; font-weight: bolder;
+}
+ 
+ 
+ /* * Home section definitions. */
+
+section.home input {
+	width: 20em;
+}
+
+a {
+	color: #333;
+}
+ 
+h1 {
+	margin-bottom: .4em; font-size: 140%;
+}
+
+h2 {
+	margin-bottom: .2em; font-size: 120%;
+}
+
+fieldset {
+	margin: 0; background: #e2e2e2;
+}
+
+legend {
+	font-size: 60%;
+}
+
+textarea {
+	font-size: inherit; font-family: inherit;
+}
+
+label.horizontal {
+	display: inline-block; width: 5em; text-align: right;
+	padding: 0 0.5em; vertical-align: middle;
+}
+
+span.avatar {
+	display: inline-block;
+	border: 2px groove #f0f0f0; background: #e2e2e2;
+}
+
+span.avatar img {
+	width: 6em; height: 6em;
+}
+
+span.slider {
+	overflow-x: scroll; 
+}
+
+span.slider a {
+	display: table-cell; padding: 0 1px; text-align: center;
+}
+
+span.slider img {
+	display: block;
+}
+
+a:hover img {
+	opacity: 0.7;
+}
+
+/*---------------------------------*/
+

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="page_head(title, remove)" th:remove="${remove}">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0">
+
+	<title>[[${title}]] - [[${SITE_NAME}]]</title>
+    <link rel="icon" type="image/png" href="https://immoben.s3.eu-central-1.amazonaws.com/icon-logo/ImmobenIcon.jpg" />
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}" ></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" ></script>
+
+	<link rel="stylesheet"
+	    href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	    crossorigin="anonymous" />
+	<link rel="stylesheet" href="assets/css/animate.css" />
+	
+</head>
+
+<body>
+
+
+<th th:fragment="column_link(fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
+	<a class="text-white"
+		th:href="@{${moduleURL} + '/page/' 
+		  + ${currentPage} + '?sortField=' 
+		  + ${fieldName}  +'&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} 
+		  + ${keyword != null ? '&keyword=' + keyword : ''} 
+		  + ${categoryId != null ? '&categoryId=' + categoryId : ''} 
+		  + ${cityId != null ? '&cityId=' + cityId : ''}
+	  }">
+		[[${columnLabel}]]
+	</a>								
+	<span th:if="${sortField == fieldName}"
+		th:class="${sortDir == 'desc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}" ></span>					
+</th>
+
+
+	
+<a th:fragment="page_link(moduleURL, pageNum, label)"
+	class="page-link" 
+	th:href="@{${moduleURL} + '/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+	[[${label}]]
+</a>
+
+		
+<div th:fragment="pagination(moduleURL, entityName)" th:remove="tag">
+	<div class="text-center m-1" th:if="${totalItems > 0}" style="padding-top:150px">
+		<span>Affichage [[${entityName}]] # [[${startCount}]] à [[${endCount}]] des [[${totalItems}]]</span>
+	</div>
+	<div class="text-center m-1 pt-5" th:unless="${totalItems > 0}">
+		<span>Aucune [[${entityName}]] n'a été trouvée.</span>
+	</div>
+	
+	<div th:if="${totalPages > 1}">
+		<nav>
+		  <ul class="pagination justify-content-center flex-wrap">
+		    <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+		    	<a th:replace="fragments :: page_link(${moduleURL}, 1, '<<')"></a>
+		    </li>		  
+		    <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+		    	<a th:replace="fragments :: page_link(${moduleURL}, ${currentPage - 1}, '<')"></a>
+		    </li>
+		    
+		    <li th:class="${currentPage != i ? 'page-item': 'page-item active'}" 
+		    	th:each="i : ${#numbers.sequence(1, totalPages)}">
+		    	<a th:replace="fragments :: page_link(${moduleURL}, ${i}, ${i})"></a>
+		    </li>
+		    
+		    <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+		    	<a th:replace="fragments :: page_link(${moduleURL}, ${currentPage + 1}, '>')"></a>
+		    </li>
+		    
+		    <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+		    	<a th:replace="fragments :: page_link(${moduleURL}, ${totalPages}, '>>')"></a>
+		    </li>		    
+		  </ul>
+		</nav>	
+	</div>	
+</div>
+
+
+<div th:fragment= "alert-message">
+	<div th:if="${message != null}" class="alert alert-success text-center">
+		[[${message}]]
+	</div>
+</div>	
+    
+    
+<div th:fragment="search_form_and_message()" class="searchTemplate ">
+    
+    <div th:if="${message != null}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+      <form th:action="@{${moduleURL} + '/page/1'}" class="form-inline text-white m-1">
+        <input type="hidden" name="sortField" th:value="${sortField}" />
+        <input type="hidden" name="sortDir" th:value="${sortDir}" />
+        Recherche: &nbsp;
+        <input type="search" class="form-control mr-sm-1" name="keyword" th:value="${keyword}" 
+            placeholder="écrivez ici" required />
+        <button type="submit" class="btn btn-success m-1" value="Chercher" >Chercher</button>
+        <button type="button" class="btn btn-danger" value="Annuler" onclick="clearFilter()" >Annuler</button>
+      </form>
+    </nav>
+</div>
+
+
+
+<div th:fragment= "modal-dialog-content">
+	<div class="modal fade" id="detailModal">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+</div>
+
+
+
+<div th:fragment="modal_dialog" class="modal fade text-center" id="modalDialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modalTitle">Attention</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<div class="modal-body">
+				<span id="modalBody"></span>
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div th:fragment="confirm_modal" class="modal fade text-center" id="confirmModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Confirmation de suppression</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<div class="modal-body">
+				<span id="confirmText"></span>
+			</div>
+			
+			<div class="modal-footer">
+				<a class="btn btn-success" href="" id="yesButton">OUI</a>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">NON</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div th:fragment="format_currency(amount)" th:remove="tag">
+	<span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>[[${#numbers.formatDecimal(amount, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]<span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+</div>
+		
+<div th:fragment="format_time(dateTime)" th:remove="tag">
+	<span th:text="${#dates.format(dateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+</div>	
+
+<div th:fragment="currency_input(amount)" th:remove="tag">
+	<input type="text" readonly class="form-control" th:value="${(CURRENCY_SYMBOL_POSITION == 'Before price' ? CURRENCY_SYMBOL : '') + #numbers.formatDecimal(amount, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE) + (CURRENCY_SYMBOL_POSITION == 'After price' ? CURRENCY_SYMBOL : '')}">
+</div>	
+
+
+
+
+<div th:fragment="search_nav_category_city_district" th:remove="tag">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+        <form th:action="@{/search_category_city_district}"  method="get" class="form-inline text-white m-3" id="searchForm">
+            <div class="header-details mb-2">
+                Catégorie:&nbsp; 
+                <select class="form-control" name="category" id="dropdownCategory">
+                    <option value="0">Toutes les catégories</option>
+
+                    <th:block th:each="cat : ${listCategories}">
+                        <option th:value="${cat.id}"
+                            th:selected="(${categoryId} == ${cat.id})">[[${cat.name}]]</option>
+                    </th:block>
+                </select>
+                &nbsp;&nbsp;Ville:&nbsp; 
+                <select class="form-control" name="city" id="dropdownCity">
+                    <option value="0">Toutes les villes</option>
+
+                    <th:block th:each="cit : ${listCities}">
+                        <option th:value="${cit.id}"
+                            th:selected="(${cityId} == ${cit.id})">[[${cit.name}]]</option>
+                    </th:block>
+                </select>
+                &nbsp;&nbsp;Quartier:&nbsp; 
+                <input type="text" name="keyword" th:value="${keyword}" class="form-control quartier" placeholder="Tous les quartiers" /> 
+                &nbsp;&nbsp;
+                <input type="submit" name="submit" value="Chercher" class="btn btn-primary" />
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-danger" onclick="clearFilter()">Annuler</button>
+           </div>
+        </form>       
+    </nav>
+</div>
+
+
+
+<div th:fragment= "body-full-details" th:remove= "tag">
+	<div class="full-details mb-5">
+		<table
+			class="table table-bordered table-striped table-hover table-responsive-xl">
+	                 <thead class="thead-dark">
+				<tr>
+					<th class="col-1 hideable-column" style="width: 10px" th:replace="fragments :: column_link('id', 'ID', 'none')"/>
+	
+					<th class="col-1">Image</th>
+					
+					<th class="col-4 hideable-column" th:replace="fragments :: column_link('name', 'Annonce', 'none')" />
+					
+					<th class="col-1 hideable-column" th:replace="fragments :: column_link('district', 'Quartier', 'none')" />
+	
+					<th class="col-1 hideable-column" th:replace="fragments :: column_link('city', 'Ville', 'none')" />
+				
+					<th class="col-1 hideable-column" th:replace="fragments :: column_link('category', 'Catégorie', 'none')" />
+	
+					<th class="col-1">Annonceur</th>
+	
+					<th class="col-1 hideable-column" th:replace="fragments :: column_link('createdTime', 'Date', 'none')" />
+	                        
+	                         <th class="col-1" style="min-width: 70px;"></th>
+				</tr>
+			</thead>
+	
+			<tbody>
+				<tr th:each="product : ${listProducts}" th:if="${product.enabled == true}">
+					<td>[[${product.id}]]</td>
+					
+					<td>
+					    <a th:href="@{'/p/' + ${product.id}}"
+						   th:title="${product.name}"> <img
+							th:src="@{${product.mainImagePath}}"
+							class="img-fluid-frontEnd" />
+					    </a>
+					</td>
+					
+					<td>
+					    <a th:href="@{'/p/' + ${product.id}}" th:title="${product.name}"> 
+						   <b>[[${product.shortName}]], </b>
+							Salon: [[${product.lounge}]], Chambre: [[${product.room}]],
+							Douche: [[${product.shower}]] , Toilette:
+							[[${product.toilet}]], Cuisine: [[${product.kitchen}]] ,
+							Superficie: [[${product.area}]] m<sup>2</sup>, 
+							Montant:<i><b th:replace="product/product_fragment :: price_fragment(${product.price})"></b></i> 
+						</a>
+					</td>
+					
+					<td>[[${product.shortDistrict}]]</td>
+					
+					<td>[[${product.city.name}]]</td>
+					
+					<td>[[${product.category.name}]]</td>
+					
+					<td>[[${product.phoneNumber}]]</td>
+					
+	                         <td th:text="${#dates.format(product.updatedTime, 'dd-MMM-yyyy  à  HH:mm:ss')}"></td>
+	
+					<td class="p-2 text-center">
+						<div style="white-space: nowrap;">
+							<a class="fas fa-file-alt fa-2x icon-blue link-detail"
+								th:href="@{'/product/detail/' + ${product.id}}"
+								title="Voir plus de détailss"></a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+<div th:fragment= "body-less-details" th:remove= "tag">
+	<div class="less-details mb-5">
+		<div th:each="product : ${listProducts}"
+			class="row m-1 table-bordered">
+	
+			<div class="col-4 p-1 text-center">
+				<a th:href="@{'/p/' + ${product.id}}"
+					th:title="${product.name}"> 
+					<img th:src="@{${product.mainImagePath}}" class="img-fluid-mobile" />
+	                    <b><small>[[${product.shortDistrict}]]</small> </b>
+					
+				</a>
+			</div>
+	
+			<div class="col-7 p-1">
+				<a th:href="@{'/p/' + ${product.id}}"
+					th:title="${product.name}"> <b>[[${product.shortName}]]</b><br> 
+					Salon: [[${product.lounge}]], Chambre: [[${product.room}]], Douche:
+					[[${product.shower}]] , Toilette: [[${product.toilet}]], Cuisine:
+					[[${product.kitchen}]] , Superficie: [[${product.area}]] m<sup>2</sup>,
+					Montant:<i><b th:replace="product/product_fragment :: price_fragment(${product.price})"></b>  </i>
+				</a>
+			</div>
+	
+			<div class="col-1 pt-2 text-center">
+				<a class="fas fa-file-alt fa-2x icon-blue link-detail"
+					th:href="@{'/product/detail/' + ${product.id}}"></a>
+			</div>
+		</div>
+		<div>&nbsp;</div>	
+	</div>
+</div>
+
+	
+</body>
+</html>

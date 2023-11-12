@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: page_head('Votre panier d achat', 'none')" >
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+<div class="container-fluid">
+	<div th:replace="navigation :: header_menu"></div>
+	<div th:replace="navigation :: search_nav"></div>
+
+	<div class="text-center mt-3">
+		<h2>Votre panier d'achat</h2>
+		<hr/><br>
+	</div>
+
+	<div class="row m-1">
+		<div class="col-sm-8 text-center">
+			<th:block th:each="item, status : ${cartItems}">
+			<div class="row border rounded mb-1 pt-2 pb-2" th:with="product = ${item.product}" th:id="'row' + ${status.count}">
+				<div class="col-sm-1 mr-3">
+					<div class="divCount text-center border circle bg-info mb-3">[[${status.count}]]</div>
+					<div class="">&nbsp;</div>
+					<div class="text-left">
+						<a class="fas fa-trash fa-2x icon-maroon linkRemove" title="supprimer cet article"
+							 th:rowNumber="${status.count}" th:href="@{'/cart/remove/' + ${product.id}}"></a>
+					</div>
+				</div>
+				
+				<div class="col-sm-4">
+						<a th:href="@{'/p/' + ${product.alias}}" target="_blank">
+							<img th:src="@{${product.mainImagePath}}" class="img-fluid-big-sample" />
+						</a>
+				</div>
+				
+				<div class="col-sm-6 text-left pt-2">
+					<div class="mb-3">
+						<a th:href="@{'/p/' + ${product.alias}}" target="_blank"
+							th:title="${product.name}">
+							<b>[[${product.shortName}]]</b>
+						</a>
+					</div>
+	
+					<div th:replace="cart/quantity_control :: quantity_control(${item.quantity}, ${product.id})" class="mt-2"></div>						
+					
+					<div>
+						<span>[[${item.quantity}]]&nbsp;X&nbsp;</span>
+						<div th:replace="product/product_fragment :: product_price"></div>					
+					</div>
+					
+					<div class="mb-3">
+						<b><span class="h4">=&nbsp;</span></b>
+						<span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+						<span th:id="'subtotal' + ${product.id}" class="h4 subtotal">[[${#numbers.formatDecimal(item.subtotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span>
+						<span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+					</div>				
+				</div>
+			</div>
+			<div class="row m-1" th:id="'blankLine' + ${status.count}">&nbsp;</div>
+			</th:block>
+		</div>
+		
+		<div class="col-sm-4 p-5" th:unless="${#lists.isEmpty(cartItems)}" id="sectionTotal">
+			<div>
+				<span class="h3"> Total estimé:</span>
+			</div>
+			<div class="mt-2">
+				<span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+				<span id="total" class="h2">[[${#numbers.formatDecimal(estimatedTotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span>
+				<span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>				
+			</div>
+			<div class="mt-4">
+				<div th:if="${shippingSupported}">
+					<form th:action="@{/checkout}">
+						<button type="submit" class="btn btn-danger pt-3 pb-3 pl-5 pr-5 m-5"><h2>Caisse</h2></button>
+					</form>
+				</div>
+				
+				<div th:unless="${shippingSupported}">
+					<div><span class="h5 text-warning">Aucune livraison disponible sur cette adresse</span></div>
+					
+					<div th:if="${usePrimaryAddressAsDefault}">
+						<a th:href="@{/account_details(redirect=cart)}" class="h6">Modifier votre adresse</a>
+					</div>
+					
+					<div th:unless="${usePrimaryAddressAsDefault}">
+						<a th:href="@{/address_book(redirect=cart)}" class="h6">Utiliser une autre adresse de livraison</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="sectionEmptyCartMessage" th:class="'text-center' + ${#lists.isEmpty(cartItems) ? '' : ' d-none'}"
+		 	style="display: block;
+				  margin-left: auto;
+				  margin-right: auto;
+				  width: 98%;"		
+		  	>
+			<div class="border border-info rounded p-3 pt-5 pb-5">
+				<h4>Votre panier est vide. <br/><br/>Vous n'avez pas choisi de produit !!!</h4>
+			</div>
+		</div>
+	</div>
+
+	
+	<div style="margin-bottom:100px;"></div>
+	
+	<div th:replace="fragments :: modal_dialog"></div>
+	<div th:replace="navigation :: footer_menu"></div>
+</div>	
+<script type="text/javascript">
+	contextPath = "[[@{/}]]";
+	var csrfHeaderName = "[[${_csrf.headerName}]]";
+	var csrfValue = "[[${_csrf.token}]]";
+	
+	decimalDigits = "[[${DECIMAL_DIGITS}]]";
+	decimalPointType = "[[${DECIMAL_POINT_TYPE}]]";
+	thousandsPointType = "[[${THOUSANDS_POINT_TYPE}]]";
+	
+</script>
+<script type="text/javascript" th:src="@{/js/jquery.number.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/shopping_cart.js}"></script>
+<script type="text/javascript" th:src="@{/js/common_modal.js}"></script>
+</body>
+</html>

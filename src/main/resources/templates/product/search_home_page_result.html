@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: page_head(${pageTitle}, 'none')" >
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+<div class="container-fluid">
+	<div th:replace="navigation :: header_menu"></div>
+	<div th:replace="navigation :: search_nav"></div>
+	
+	<div th:if="${totalItems > 0}">
+	   <div th:if="${keyword != null && !keyword.isEmpty()}">
+		  <h2>Résultats de recherche pour '[[${keyword}]]'</h2>
+	   </div>
+       <div th:unless="${keyword != null && !keyword.isEmpty()}">
+          <h2>Résultats de recherche </h2>
+       </div>
+	</div>
+	<div th:unless="${totalItems > 0}">
+       <div th:if="${keyword != null && !keyword.isEmpty()}">
+          <h2>Aucun résultat trouvé pour '[[${keyword}]]'</h2>
+       </div>
+       <div th:unless="${keyword != null && !keyword.isEmpty()}">
+          <h2>Aucun résultat trouvé !</h2>
+       </div>
+	</div>
+		
+	<div class="row">
+		<th:block th:each="product : ${listResult}">
+		<div th:replace="product/product_fragment :: content"></div>
+		</th:block>
+	</div>
+	
+	<div th:replace="fragments :: pagination('/search_category_city_district', 'annonce')"></div>
+	
+	<div th:replace="navigation :: footer_menu"></div>
+</div>	
+</body>
+</html>

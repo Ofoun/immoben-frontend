@@ -1,0 +1,54 @@
+server:
+  port: 81
+  servlet:
+    session:
+      persistent: false
+
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/heroku_bd4943e4031d98d?serverTimezone=UTC
+    username: root
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 2
+  jpa:
+    generate-ddl: 'false'
+    hibernate:
+      ddl-auto: none                                  
+    properties:                                                          
+      hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+#       format_sql: true
+    show-sql: true
+    
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 107057511203-on3fohqtpbsa5krusqpsvgaa8jngv888.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+            - email
+            - profile
+          facebook:
+            client-id: 1146230192575599
+            client-secret: d00534a69ab09063f9ece08eccae68c2
+            scope:
+            - email
+            - public_profile
+            
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: immobenbenin@googlemail.com
+    password: rjrrkxvzrdjznwfu
+    properties:
+        mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  

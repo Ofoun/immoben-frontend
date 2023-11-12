@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: page_head('immoben', 'none')" >
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+<div class="container-fluid ">
+	<div th:replace="navigation :: header_menu"></div>
+	<div th:replace="navigation :: search_nav"></div>
+	
+	<div style="position: relative;">
+		<div class="text-center border border-info rounded m-3 p-3"  
+			style="max-width: 70%; height: 200px;
+				position: relative; text-align: center; left: 15%;">
+			<h2>Votre commande a été executée !</h2>
+			<div>&nbsp; &nbsp; &nbsp;</div>
+			<h6>Un e-mail de confirmation vous a été envoyé.</h6>
+			<h6>Veuillez vérifier votre e-mail pour plus de détails.</h6>
+		</div>
+	</div>
+	
+	<div th:replace="navigation :: footer_menu"></div>
+</div>	
+</body>
+</html>

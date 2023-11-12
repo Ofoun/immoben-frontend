@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: page_head(${pageTitle}, 'none')">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+<div class="container-fluid text-center">
+
+	<div th:replace="navigation :: header_menu"></div>
+	
+	<div class="text-center">
+		<h2 class="m-5">Contact</h2>
+		<hr/><br>
+		<div class="mb-5"></div>	
+		<p>Merci de nous avoir contacté. Nous vous répondrons sous peu ! </p>	
+		
+		<div style="margin-bottom:20px;"></div>
+		<small>
+			<div style="margin-top: 150px;"></div>
+			
+			<h5><b>Immoben.fr</b></h5>
+			
+			<b>Téléphone:</b><a href="tel:+229 60 40 62 62"> +229 60 40 62 62</a> / <a href="tel:+229 60 40 62 62">+229 60 40 62 62</a><br>
+			<b>Email:</b> <a href= "mailto:info@immoben.fr">info@immoben.fr</a><br>
+			<b>WhatsApp:</b> <a href="https://wa.me/+229 60 40 62 62">+229 60 40 62 62</a><br>
+			
+			<b>Heures de service:</b>
+			<b>Mo. - Fr.</b> 9:00 - 19:00 Uhr, <b>Sa.</b> 9:00 - 13:00 Uhr<br>
+			
+			           
+			<b>N° de compte bancaire:</b> OraBank Bénin / Compte: 023866600201-75
+		</small>
+	</div>
+
+	<div th:replace="navigation :: footer_menu"></div>
+</div>	
+</body>
+</html>

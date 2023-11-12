@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head >
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+<div th:fragment="content" class="modal fade" id="returnOrderModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="returnOrderModalTitle">Retour de la commande</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<form onsubmit="return submitReturnOrderForm();">
+			<div class="modal-body">
+				<div id="divReason">
+					<div>Raison:</div>
+					<div>
+						<input type="radio" name="returnReason" value="I bought the wrong items" required />
+						J'ai acheté des mauvais articles
+					</div>
+					<div>
+						<input type="radio" name="returnReason" value="I received the wrong items" />
+						J'ai reçu des mauvais articles
+					</div>
+					<div>
+						<input type="radio" name="returnReason" value="The product was damaged/defective" />
+						Le produit était endommagé/défectueux
+					</div>
+					<div>
+						<input type="radio" name="returnReason" value="The product arrived too late" />
+						Le produit est arrivé trop tard
+					</div>	
+					<div class="m-1">
+						<textarea class="form-control" id="returnNote" rows="3" maxlength="120"
+							placeholder="Information additionnelle"></textarea>
+					</div>														
+				</div>
+				<div id="divMessage" class="text-center"></div>
+			</div>
+			
+			
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-success" id="firstButton">Envoyer la demande</button>
+				<button type="button" class="btn btn-danger" id="secondButton" data-dismiss="modal">Annuler</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>	

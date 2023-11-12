@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace=" fragments :: page_head(${pageTitle}, 'none')">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" th:href="@{/style.css}">	
+</head>
+
+
+<body>
+
+	<div class="container-fluid ml-1">
+	
+	<div th:replace="navigation :: header_menu"></div>
+	<div th:replace="navigation :: search_nav"></div>
+	
+	<div th:replace="breadcrumb :: content"></div>
+		
+	<div class="row">
+		<div class="col-sm">
+			
+			<div class="row mb-3 ml-2">
+				<img id="bigImage" th:src="@{${product.mainImagePath}}" 
+					style="border: 1px solid #646464; border-radius: 4px; width: 93%; max-width: 600px; max-height: 400px" index="0" />
+			</div>
+			
+			 <div class="row justify-content-center">
+				<div class="col-sm">
+					<img class="image-thumbnail border border-secondary mb-1 p-1" th:src="@{${product.mainImagePath}}" style= "height:50px; min-width:60px;" index="0" />		
+					<th:block th:each="extraImage, status : ${product.images}" >
+						<img class="image-thumbnail border border-secondary mb-1 p-1" th:src="@{${extraImage.imagePath}}" style= "height:50px; min-width:60px;"
+								th:index="${status.count}" />			
+					</th:block>
+				</div>		 					
+			</div>
+		</div>		
+		
+		<div class="col-sm mt-5">
+			<div>
+			 	 <h3>[[${product.name}]]</h3>  
+			</div>&nbsp;
+			<div>
+				<span><span style="text-decoration: underline;"><b>Ville :</b></span> [[${product.city.name}]]</span>
+			</div>&nbsp;
+			
+			<div>
+				<span><span style="text-decoration: underline;"><b>Quartier :</b></span> [[${product.district}]]</span>
+			</div>&nbsp;
+			
+			<div>
+				<div><span><span style="text-decoration: underline;"><b>Salon :</b></span> [[${product.lounge}]]</span></div>
+
+				<div><span><span style="text-decoration: underline;"><b>Chambre :</b></span> [[${product.room}]]</span></div>
+
+				<div><span><span style="text-decoration: underline;"><b>Cuisine :</b></span> [[${product.kitchen}]]</span></div>
+
+				<div><span><span style="text-decoration: underline;"><b>Douche :</b></span> [[${product.shower}]]</span></div>
+
+				<div><span><span style="text-decoration: underline;"><b>Toilette :</b></span> [[${product.toilet}]]</span></div>
+
+				<div><span><span style="text-decoration: underline;"><b>Superfice :</b></span> [[${product.area}]]</span> m2</div>
+			</div>&nbsp;
+			<div>
+				<span style="text-decoration: underline;"><b>Montant: </b></span>
+				<span th:if="${product.discountPercent <= 0}">
+					<div th:replace="product/product_fragment :: price_fragment(${product.price})"></div>
+				</span>
+				<del th:if="${product.discountPercent > 0}">
+					<span>
+						<div th:replace="product/product_fragment :: price_fragment(${product.price})"></div>
+					</span>
+				</del>
+			</div>
+			
+			<div th:if="${product.discountPercent > 0}">
+				<span style="text-decoration: underline;"><b>Prix réduit :</b></span>
+				<span style="font-size: larger; color: darkred">
+					<div th:replace="product/product_fragment :: price_fragment(${product.discountPrice})"></div>
+				</span>&nbsp;
+				([[${#numbers.formatDecimal(product.discountPercent, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]] % de réduction)&nbsp;
+			</div>
+			
+			<div>
+				<div>
+					<span><span style="text-decoration: underline;"><b>Téléphone de l'annonceur: </b></span> [[${product.phoneNumber}]]</span>
+				</div>
+				
+				<div>
+					<h5></h5>
+				</div>
+			</div>
+		
+			<div>&nbsp;</div>
+			<div th:utext="${product.shortDescription}"></div>
+		</div>
+		
+		<div class="col-sm-2">
+			<div>
+				<span th:if="${product.inStock}" class="text-success "><b>Panier</b></span>
+				<span th:unless="${product.inStock}" class="text-danger"><b>Désolé, cet article n'est pas actuellement disponible !!!</b></span>
+			</div>
+			
+			<th:block th:if="${product.inStock}">
+			<div th:replace="cart/quantity_control :: quantity_control(1, ${product.id})" class="mt-2"></div>
+			<div class="mt-3">
+				<input type="button" value="Ajouter au panier" id="buttonAdd2Cart" class="btn btn-primary"/>
+			</div>
+			</th:block>
+		</div>
+	</div>
+	
+	
+	<div class="row">
+		<div class="col-12 mb-5">
+			<div><hr/></div>
+			<div>
+				<h3>Description: </h3>
+			</div>
+			<div th:utext="${product.fullDescription}"></div>
+		</div>
+	</div>
+	
+	
+	<div class="row">
+		<div class="col-12 mb-5">
+			<div><hr/></div>
+			<div>
+				<h3>Détails: </h3>
+			</div>
+			<th:block th:each="detail : ${product.details}">
+				<div>
+					<b>[[${detail.name}]]:</b>
+					<span>[[${detail.value}]]</span>
+				</div>
+			</th:block>
+		</div>
+	</div>
+
+	<div th:replace="product/images_carousel :: content"></div>	
+	<div th:replace="fragments :: modal_dialog"></div>
+	<div th:replace="navigation :: footer_menu"></div>
+
+
+</div>
+<script type="text/javascript">
+	contextPath = "[[@{/}]]";
+	productId = "[[${product.id}]]";
+	var csrfHeaderName = "[[${_csrf.headerName}]]";
+	var csrfValue = "[[${_csrf.token}]]";	
+ 	
+	$(document).ready(function() {
+		bigImage = $("#bigImage");
+		
+		$(".image-thumbnail").mouseover(function() {
+			currentImageSource = $(this).attr("src");
+			currentImageIndex = $(this).attr("index");
+			
+			bigImage.attr("src", currentImageSource);
+			bigImage.attr("index", currentImageIndex);		
+		});
+		
+		bigImage.on("click", function() {
+			$("#carouselModal").modal("show");
+			imageIndex = parseInt(bigImage.attr("index"));
+			$("#carouselExampleIndicators").carousel(imageIndex);
+		});
+	}); 
+</script>
+<script type="text/javascript" th:src="@{/js/common_modal.js}"></script>
+<script type="text/javascript" th:src="@{/js/quantity_control.js}"></script>
+<script type="text/javascript" th:src="@{/js/add_to_cart.js}"></script>
+		
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

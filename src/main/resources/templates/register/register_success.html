@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: page_head(${pageTitle}, 'none')" >
+	<meta charset="UTF-8">
+</head>
+<body>
+
+<div class="container-fluid">
+	<div th:replace="navigation :: header_menu"></div>
+	
+	<div>&nbsp;</div>
+	
+	<div class="text-center">
+		<h2>Enregistrement</h2><hr/>
+		<h4><font style= "color: #ffffff;">Vous vous êtes enregistré avec succès en tant que client.</font></h4>
+		<div style="padding-top: 50px;"></div>
+		<p><a th:href="@{/login}">Cliquez ici pour continuer</a></p>
+	</div>
+
+	<div>&nbsp;</div>
+	
+	<div th:replace="navigation :: footer_menu"></div>
+</div>	
+</body>
+</html>

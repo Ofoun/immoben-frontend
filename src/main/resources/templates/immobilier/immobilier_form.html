@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: page_head('Immoben', 'none')">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" /> -->
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="assets/css/animate.css"/>
+	
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+	<div th:replace="navigation :: header_menu"></div>
+	<div th:replace="navigation :: search_nav"></div>
+	
+	<div th:replace="navigation :: full-row"></div>
+	<div th:replace="navigation :: less-row"></div>
+	
+	
+	<div class="row m-1"> hi
+	<!-- -----------------------------------------------------------------------------------------------------------------------------------
+		4-Column														<template id="rentArticle-template">
+-----------------------------------------------------------------------------------------------------------------------------------	 -->	
+ 		<template id="rentArticle-template">CHERCHER UNE ANNONCE DE LOCATION
+			<section class="rentArticle">CHERCHER UNE ANNONCE DE LOCATION
+				<fieldset class= "col-12 fieldsetCSS"> CHERCHER UNE ANNONCE DE LOCATION
+					<div class="title-styling">CHERCHER UNE ANNONCE DE LOCATION
+						<legend>CHERCHER UNE ANNONCE DE LOCATION</legend><hr/>
+					</div>
+					<div>
+					    <label>Ville</label>
+						<select name="city">
+							<option value="" selected="selected">toutes les villes</option>
+							<option value="COTONOU">Cotonou</option>
+							<option value="ABOMEY_CALAVI">Abomey-Calavi</option>
+							<option value="PORTO_NOVO">Porto-Novo</option>
+							<option value="PARAKOU">Parakou</option>
+							<option value="ABOMEY">Abomey</option>
+							<option value="LOKOSSA">Lokossa</option>
+							<option value="OUIDAH">Ouidah</option>
+							<option value="DJOUGOU">Djougou</option>
+							<option value="BOHICON">Bohicon</option>
+							<option value="NATITINGOU">Natitingou</option>
+							<option value="SAVE">Savè</option>
+							<option value="NIKKI">Nikki</option>
+							<option value="DOGBO_TOTA">Dogbo-Tota</option>
+							<option value="KANDI">Kandi</option>
+							<option value="COVE">Covè</option>
+							<option value="MALANVILLE">Malanville</option>
+							<option value="POBE">Pobè</option>
+							<option value="KEROU">Kérou</option>
+							<option value="SAVALOU">Savalou</option>
+							<option value="SAKETE">Sakété</option>
+							<option value="COME">Comè</option>
+							<option value="BEMBEREKE">Bembérékè</option>
+							<option value="BASSILA">Bassila</option>
+							<option value="BANIKOARA">Banikoara</option>
+							<option value="KETOU">Kétou</option>
+							<option value="DASSA_ZOUME">Dassa-Zoumè</option>
+							<option value="TCHAOUROU">Tchaourou</option>
+							<option value="ALLADA">Allada</option>
+							<option value="APLAHOUE">Aplahoué</option>
+							<option value="TANGUIETA">Tanguiéta</option>
+							<option value="NDALI">N'Dali</option>
+							<option value="SEGBANA">Segbana</option>
+							<option value="ATHIEME">Athiémé</option>
+							<option value="GRAND_POPO">Grand Popo</option>
+							<option value="KOUANDE">Kouandé</option>
+							<option value="AUTRE_VILLE">Autre Ville</option>
+						</select>
+					</div> 
+					<div>
+					    <label>Quartier</label>
+						<input type="text" name="district" placeholder="tous les quartiers" />
+					</div>
+					<div>
+					   <label>Objet</label> 
+						<select name="category">
+							<option value="" selected="selected">- - -</option>
+							<option value="APPARTMENT">Appartement</option>
+							<option value="HAUSE">Maison</option>
+							<option value="BUSINESS">Buro & Magasin</option>
+						</select>
+					</div> 
+					<div>
+					    <label>Salon</label> 
+						<select name="lounge">
+							<option value="" selected="selected">- - -</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+					</div> 
+					<div>
+					    <label>Chambre</label> 
+						<select name="room">
+							<option value="" selected="selected">- - -</option>
+							<option value="1" >1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</div> 
+					<div>
+					    <label>Cuisine</label> 
+					    <select name="kitchen">
+							<option value="" selected="selected">- - -</option>
+							<option value="1" >1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+					</div> 
+					<div>
+					    <label>Douche</label> 
+						<select name="shower">
+							<option value="" selected="selected">- - -</option>
+							<option value="1" >1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+					</div> 
+					<div>
+					    <label>Toilette</label> 
+						<select name="toilet">
+							<option value="" selected="selected">- - -</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+					</div>
+					<div>
+					    <label>Superficie minimum (m<sup>2</sup>)</label>
+						<input type="text" name="lower-area" placeholder="- - -"/>
+					</div>
+					<div>
+					    <label>Superficie maximum (m<sup>2</sup>)</label>
+						<input type="text" name="upper-area" placeholder="- - -"/>
+					</div>
+					<div>
+					    <label>Loyer minimum (F)</label>
+						<input type="text" name="lower-price" placeholder="- - -"/>
+					</div>
+					<div>
+					    <label>Loyer maximum (F)</label>
+						<input type="text" name="upper-price" placeholder="- - -"/><br/><br/>
+					</div>
+					<div>
+						<div class="treeline-top"></div>
+					    <button type="button">Chercher </button>
+					    <div class="treeline-bottom"></div>
+					</div> ou
+					<div>
+						<div class="treeline-top"></div>
+					    <button type="button">Afficher toutes les annonces </button>
+					</div>
+				</fieldset>
+					<div class="lastline"></div>
+			</section>
+		</template>
+
+	</div>
+
+	<div th:replace="navigation :: footer_menu"></div>	
+	
+	
+</div>	
+</body>
+</html>
