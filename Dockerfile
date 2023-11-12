@@ -10,6 +10,6 @@ RUN mvn -f ./ImmobenWebParent/ImmobenFrontEnd/pom.xml clean package
 # Package stage
 #
 FROM openjdk:11-jre-slim
-COPY --from=build ./ImmobenWebParent/ImmobenFrontEnd/target/immobenfrontend-0.0.1-SNAPSHOT.jar immoben-frontend.jar
+COPY --from=build ./ImmobenWebParent/ImmobenFrontEnd/target/immobenfrontend-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 81
-ENTRYPOINT ["java","-jar","./immoben-frontend.jar"]
+ENTRYPOINT ["java","-jar","./app.jar"]
